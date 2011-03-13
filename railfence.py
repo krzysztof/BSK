@@ -1,3 +1,8 @@
+# Author: Krzysztof Nowak (kiryx7 [ at ] gmail.com)
+#
+# USAGE:
+# ciphering: python railfence.py 4 "It's not dead, It's resting." > cipher.txt
+
 import sys
 height = int(sys.argv[1]);
 message = sys.argv[2];
