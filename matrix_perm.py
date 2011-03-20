@@ -1,15 +1,34 @@
 # Author: Krzysztof Nowak (kiryx7 [ at ] gmail.com)
 #
 # USAGE:
-# ciphering: python matrix_perm.py 1-3-2 "It's not dead, It's resting." > cipher.txt
-# decipher: python matrix_perm.py 1-3-2 "$(cat cipher.txt)" > message.txt
+# ciphering: python matrix_perm.py c 1-3-2 "It's not dead, It's resting." > cipher.txt
+# deciphering: python matrix_perm.py d 1-3-2 "$(cat cipher.txt)" > message.txt
 # If key_length does not divide msg_length without a reminder, program adds white space at the end of the message
 
 import sys
-key = sys.argv[1];
-key = [ int(x)-1 for x in key.split('-') ] #zamieniam "3-1-2" na tablice intow [3,1,2] (przy okazji-1 wszystko)
+
+def get_key(key_string):
+	
+	if "-" in key_string: #jesli klucz zawiera '-'
+		key = [ int(x)-1 for x in key.split('-') ] #zamieniam "3-1-2" na tablice intow [3,1,2] (przy okazji-1 wszystko)
+	else:
+		key = list(key_string.upper());
+		print key;
+		#for i in range(len(key)):
+			
+def reverse_key(key):
+	new = list(key);
+	for c in range(len(key)):
+		new[key[c]]=c;
+	return new
+key = sys.argv[2];
+
+key = get_key(key);
+
+if(sys.argv[1]=='d'):
+	key = reverse_key(key);	
 N = len(key)#rozmiar tablicy, zeby nie czytac w petli
-message = list(sys.argv[2])
+message = list(sys.argv[3])
 while(len(message)%N != 0):
 	message.append(' ')#jesli zostaja puste pola w macierzy, wstawiamy spacje
 #print message
