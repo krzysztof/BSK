@@ -33,6 +33,7 @@ if('C' in option.upper()):
 		skok[0]-=2;
 		skok[1]+=2;
 		idx_skok=0;
+
 elif('D' in option.upper()):
 	group_cnt = tab_len/hill_size; #ilosc pelnych wzniesien
 	a = [0]*height #ilosc grup == wysokosc
@@ -53,17 +54,17 @@ elif('D' in option.upper()):
 		a[i]=list(tmp)
 	idx = 0;
 	addition = 1;
-	print a
+	#print a
 	for _ in range(tab_len):
 		cipher+=a[idx].pop(0);
-		print cipher		
+		#print cipher		
 		idx += addition;
 		if(idx>=height):
 			addition=-1;
-			idx-=1
+			idx-=2
 		if(idx<0):
 			addition=1;
-			idx+=1;
+			idx+=2;
 		
 		
 print cipher;
