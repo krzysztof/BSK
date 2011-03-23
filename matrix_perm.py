@@ -17,18 +17,18 @@ def get_key(key_string): #wyciaganie klucza z argumentu
 	else:
 		key = list(key_string.upper());
 		idx = 0;
-		for i in string.ascii_uppercase:
+		for i in string.ascii_uppercase: #po kolei wszystlie litery z alfabetu ascii_uppercase [A-Z]
 			k = -1
 			try:
-				while True:
-					k = key.index(i,k+1)
-					key[k]=idx;
+				while True: #chcemy znalezc wszystkie wystapienia kazdej z liter (i) w kluczu
+					k = key.index(i,k+1) #szukamy indeksu wystapienia zaczynajac od k+1 (poczatkowo k=-1, zatem od 0)
+					key[k]=idx; #jesli znajdziemy litere k zastepujemy kolejnym indeksem (mamy permutacje)
 					idx += 1;
-			except ValueError:
+			except ValueError: #jesli 3 linijki wyzej nie ma wiecej liter, rzuca wyjatek ktory zostawiamy
 				pass
 		return key
 			
-def reverse_key(key):
+def reverse_key(key): #odwracanie permutacji
 	new = list(key);
 	for c in range(len(key)):
 		new[key[c]]=c;
@@ -45,9 +45,9 @@ while(len(message)%N != 0):
 	message.append(' ')#jesli zostaja puste pola w macierzy, wstawiamy spacje
 #print message
 tab_len = len(message)
-cipher = list(message) #kopiuje tablice zeby odrazu miec indeksy
+cipher = list(message) #kopiuje tablice zeby odrazu miec taki sam rozmiar
 
-for k in range(N):#dla N-kolumn 
+for k in range(N):#dla N-kolumn macierzy
 	for j in range(k,tab_len,N):#wybierz indeksy z danej kolumny
 		cipher[j] = message[(key[k]-k)+j];#i podmien w szyfrze przesuwajac indeks o wartosc klucza
 

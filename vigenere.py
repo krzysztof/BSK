@@ -1,5 +1,7 @@
 # Author: Krzysztof Nowak (kiryx7 [ at ] gmail.com)
 #
+# Algorithm based on vigenere table.
+#
 # USAGE:
 # ciphering: python vigenere.py c "KEYWORD" "SECRETSATANICMESSAGE" > cipher.txt
 # deciphering: python vigenere.py d "KEYWORD" "$(cat cipher.txt)" > message.txt

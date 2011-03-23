@@ -66,5 +66,4 @@ elif('D' in option.upper()):
 			addition=1;
 			idx+=2;
 		
-		
 print cipher;
