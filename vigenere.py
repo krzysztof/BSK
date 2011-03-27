@@ -3,27 +3,29 @@
 # Algorithm based on vigenere table.
 #
 # USAGE:
-# ciphering: python vigenere.py c "KEYWORD" "SECRETSATANICMESSAGE" > cipher.txt
+# ciphering: python vigenere.py c "KEYWORD" "Secret Message number 23" > cipher.txt
 # deciphering: python vigenere.py d "KEYWORD" "$(cat cipher.txt)" > message.txt
 
-import sys
+import sys,string
 option = sys.argv[1].upper();
-keyword = sys.argv[2].upper();
-message = sys.argv[3].upper();
+keyword = sys.argv[2];
+message = sys.argv[3];
 cipher = "";
 
-n = 26
 key_idx = 0
 
+alfabet = string.ascii_letters+' -1234567890_.:\n\t'; #tworzymy alfabet A-Za-z z jakimis krzakami
+n = len(alfabet);
+mapa = dict( zip(alfabet , range(n)) ) #tworzymy hashmape par 'a':0 'b':1 itd..
 if(option == 'C'):
 	multiplier = 1;
 elif(option == 'D'):
 	multiplier = -1;
 
 for letter in message:
-	cipher += chr((ord(letter)+multiplier*ord(keyword[key_idx]))%n+65)
+	cipher += alfabet[ (mapa[letter] + multiplier*mapa[keyword[key_idx]] ) % n ];
 	key_idx+=1;
-	key_idx%=len(keyword)
+	key_idx%=len(keyword);
 
 print cipher
 
