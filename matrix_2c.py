@@ -50,70 +50,37 @@ def set_matrix(key,matrix,message_len):
 				counter+=1;
 	return matrix[:real_i+1]
 
-
-key = sys.argv[2];
 option = sys.argv[1].upper();
+key = sys.argv[2];
 key = get_key(key);
-
-#if(sys.argv[1]=='d'):
-	#key = reverse_key(key);	
-N = len(key) #rozmiar tablicy, zeby nie czytac w petli
 message = sys.argv[3]
-out_matrix = []
 cipher = "";
-out_str = ""
-k=0;
-key_idx = 0;
-if(option.upper() == 'C'):
-	#spisujemy wiadomosc do macierzy
-	#sprawdzajac czy nalezy przeniesc wiadomosc do kolejnej tablicy
-	
-	for idx in range(len(message)):
-		out_str+=message[idx];
-		if(key_idx<len(key) and key[key_idx]==k):
-			out_matrix.append(out_str);
-			k+=1;
-			key_idx=0;
-			out_str=""
-		#elif (key_idx>=len(key)-1):
-		#	key_idx=0;
-		#	out_matrix.append(out_str);
-		#	out_str=""
-		else:
-			key_idx+=1;
-			key_idx%=len(key);
-	out_matrix.append(out_str);
-	out_str2 = ""
-	i = 0;
-	j = 0;
-	out_matrix2 = []
-	tmp_counter = 0;
-	#zapisujemy wiadomosc kolumnami
-	while(len(message)>tmp_counter):
-		if(i<len(out_matrix) and j<len(out_matrix[i])):
-			tmp_counter +=1;
-			out_str2+=out_matrix[i][j];
-		i+=1;
-		if(i==len(out_matrix)):
-			out_matrix2.append(out_str2);
-			out_str2=""
-			i=0;
-			j+=1;
-	out_matrix2.append(out_str2);
-	out_matrix3 = list(out_matrix2)
-	
-	for i in range(len(key)):
-		out_matrix3[key[i]]=out_matrix2[i];
-			
-	cipher = cipher.join(out_matrix3);
-		
-	#print out_matrix3;
-	#print out_matrix2;
-elif(option.upper() == 'D'):
-	rows = int(ceil((len(message)+ ((len(key)*(len(key)-1))/2))/len(key)))
-	tab = [ len(key)*[0] for _ in range(rows) ]
 
-	tab = set_matrix(key,tab,len(message));
+rows = int(ceil((len(message)+ ((len(key)*(len(key)-1))/2))/len(key)))
+tab = [ len(key)*[0] for _ in range(rows) ]
+tab = set_matrix(key,tab,len(message));
+
+if(option.upper() == 'C'):
+	mes_idx = 0;
+	key=reverse_key(key);
+	for i in range(len(tab)):
+		for j in range(len(tab[0])):
+			if(tab[i][j]==1):
+				tmp = message[mes_idx];
+				tab[i][j]=tmp;
+				mes_idx+=1;
+#	for i in tab:
+#		for j in i:
+#			print j,
+#		print '\n'
+	
+	for j in key:
+		for i in range(len(tab)):
+			if(tab[i][j]!=0):
+				cipher+=tab[i][j];
+				
+	
+elif(option.upper() == 'D'):
 #	for i in tab:
 #		for j in i:
 #			print j,
