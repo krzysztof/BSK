@@ -13,7 +13,7 @@ import sys,string
 
 def get_key(key_string): #wyciaganie klucza z argumentu
 	if "-" in key_string: #jesli klucz zawiera '-', else jesli jest slowem
-		return [ int(x)-1 for x in key.split('-') ] #zamieniam "3-1-2" na tablice intow [3,1,2] (przy okazji-1 wszystko)
+		return [ int(x)-1 for x in key_string.split('-') ] #zamieniam "3-1-2" na tablice intow [3,1,2] (przy okazji-1 wszystko)
 	else:
 		key = list(key_string.upper());
 		idx = 0;
