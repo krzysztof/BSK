@@ -56,7 +56,7 @@ key = get_key(key);
 message = sys.argv[3]
 cipher = "";
 
-rows = int(ceil((len(message)+ ((len(key)*(len(key)-1))/2))/len(key)))
+rows = int(len(message)*len(key));
 tab = [ len(key)*[0] for _ in range(rows) ]
 tab = set_matrix(key,tab,len(message));
 
