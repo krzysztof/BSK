@@ -1,0 +1,10 @@
+Enigma cipher written in Python. 
+
+Usage:
+python enigma.py [N] [key] [inFile] [outFile]
+
+where:
+	N - number of permutations ( actually it turns into 2N + 1 )
+	key - word used to generate permutations and initial offsets of each ring.
+	inFile - filename to cipher
+	outFile - filename to generate out
