@@ -3,6 +3,7 @@
 # USAGE:
 # ciphering: python railfence.py c 4 "It's not dead, It's resting." > cipher.txt
 # deciphering: python railfence.py d 4 "$(cat cipher.txt)" > message.txt
+#
 
 import sys
 option = sys.argv[1];
