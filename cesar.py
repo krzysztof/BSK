@@ -1,6 +1,6 @@
 # Author: Krzysztof Nowak (kiryx7 [ at ] gmail.com)
 #
-# Algorithm based on cesars cipher
+# Algorithm based on cesars cipher 
 #
 # USAGE:
 # ciphering: python cesar.py c 9 11 "Secret Message" > cipher.txt
