@@ -4,7 +4,7 @@
 # ciphering: python matrix_2c.py c CONVENIENCE "It's not dead, It's resting." > cipher.txt
 # deciphering: python matrix_2c.py d CONVENIENCE "$(cat cipher.txt)" > message.txt
 #
-# Key: 
+# Key:  
 # Can either consist of single permutation divided by dashes: 5-2-3-1-4 
 # or a word: eg. CRYPTO transates to 1-4-6-3-5-2
 
