@@ -6,7 +6,7 @@
 #
 # Key: 
 # Can either consist of single permutation divided by dashes: 5-2-3-1-4 
-# or a word: eg. CRYPTO transates to 1-4-6-3-5-2
+# or a word: eg. CRYPTO transates to 1-4-6-3-5-2 
 # If key_length does not divide message_length without a reminder, program adds white space at the end of the message
 
 import sys,string
